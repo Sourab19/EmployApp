@@ -8,6 +8,10 @@ app.use(cors());
 require("dotenv").config();
 require("./db/connection");
 
+app.get("/",(req,res)=>{
+  res.send("Api is running");
+})
+
 // deployment
 
 
