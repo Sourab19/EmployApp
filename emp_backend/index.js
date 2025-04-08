@@ -7,7 +7,11 @@ require("dotenv").config();
 require("./db/connection"); // adjust if needed
 
 app.use(morgan("dev"));
-app.use(cors());
+app.use(cors({
+  origin: "https://emp",
+  credentials: true,
+  methods: ["GET", "POST", "PUT", "DELETE"]
+}));
 app.use(express.json());
 
 // Routes
