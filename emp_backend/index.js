@@ -22,7 +22,7 @@ const basicRoute2 = require("./routes/adminRoutes");
 app.use("/admin", basicRoute2);
 const basicRoute3 = require("./routes/userRoutes");
 app.use("/user", basicRoute3);
-
-app.listen(process.env.PORT, () => {
+const PORT = process.env.PORT|| 3000
+app.listen(PORT, () => {
   console.log(`Server is running on port ${process.env.PORT}`);
 });
