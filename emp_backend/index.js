@@ -4,14 +4,16 @@ const morgan = require("morgan");
 const cors = require("cors");
 
 require("dotenv").config();
-require("./db/connection"); // adjust if needed
+require("./db/connection");
 
 app.use(morgan("dev"));
-app.use(cors({
-  origin: "https://employ-app-client.vercel.app/",
-  credentials: true,
-  methods: ["GET", "POST", "PUT", "DELETE"]
-}));
+app.use(
+  cors({
+    origin: "https://employ-app-client.vercel.app/",
+    credentials: true,
+    methods: ["GET", "POST", "PUT", "DELETE"],
+  })
+);
 app.use(express.json());
 
 // Routes
@@ -23,10 +25,10 @@ app.use("/emp", empRoutes);
 app.use("/admin", adminRoutes);
 app.use("/user", userRoutes);
 
-app.get("/get", (req, res) => {
+app.get("/", (req, res) => {
   res.send("API is running");
 });
-const PORT = process.env.PORT|| 3000
-app.listen(PORT,()=>{
-    console.log(`Server is running in Port ${PORT}`)
-})
+const PORT = process.env.PORT || 3000;
+app.listen(PORT, () => {
+  console.log(`Server is running in Port ${PORT}`);
+});
