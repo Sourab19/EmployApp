@@ -14,8 +14,7 @@ router.post('/login', async (req, res) => {
       if (user.password == req.body.password) {
         const payload={email:user.email,password:user.password}
         const token2=jwt.sign(payload,'empApp2');
-        const userObj = user.toObject();
-        res.status(200).send({message:"login successfull",user: userObj,token:token2})
+        res.status(200).send({message:"User login successfull",token:token2})
 
       } else {
         res.status(404).send({message:'Invalid credentials'});
