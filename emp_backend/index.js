@@ -4,6 +4,7 @@ const morgan = require("morgan");
 app.use(morgan("dev"));
 const cors = require("cors");
 app.use(cors());
+app.use(express.json());
 
 require("dotenv").config();
 require("./db/connection");
