@@ -39,7 +39,7 @@ const AddEmp = () => {
     },[])
     function subVal(){
       if (location.state!=null) {
-        axiosInstance.put('http://localhost:3000/emp/update/'+location.state.val._id,form).then((res)=>{
+        axiosInstance.put('update/'+location.state.val._id,form).then((res)=>{
           alert('Updated Successfully')
           navigate('/admin');
   
@@ -48,7 +48,7 @@ const AddEmp = () => {
         })
       }
       else{
-        axiosInstance.post('http://localhost:3000/emp/add',form).then((res)=>{
+        axiosInstance.post('add',form).then((res)=>{
           alert('Added Successfully')
           navigate('/admin');
         }).catch((error)=>{

@@ -9,7 +9,7 @@ const Login = () => {
 const [adminForm, setAdminForm] = useState({ email: '', password: '' });
   const navigate=useNavigate();
   function capValue(){
-    axios.post('http://localhost:3000/user/login',userForm).then((res)=>{
+    axios.post('https://employ-app-server.vercel.app/user/login',userForm).then((res)=>{
       alert(res.data.message);
       if(res.data.token){
         sessionStorage.setItem('token2',res.data.token)
@@ -22,7 +22,7 @@ const [adminForm, setAdminForm] = useState({ email: '', password: '' });
     })
   }
     function adminVal(){
-      axios.post('http://localhost:3000/admin/login',adminForm).then((res)=>{
+      axios.post('https://employ-app-server.vercel.app/admin/login',adminForm).then((res)=>{
         alert(res.data.message);
         if(res.data.token){
           sessionStorage.setItem('token',res.data.token)

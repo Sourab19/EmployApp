@@ -11,7 +11,7 @@ const EmpAdmin = () => {
 
 
     useEffect(()=>{
-      axiosInstance.get("http://localhost:3000/emp").then((res)=>{
+      axiosInstance.get("emp").then((res)=>{
        setData(res.data);
      }).catch((err)=>{
        console.log(err);
@@ -21,7 +21,7 @@ const EmpAdmin = () => {
       navigate('/add',{state:{val}});
     }
     function delVal(val){
-      axiosInstance.delete(`http://localhost:3000/emp/delete/${val._id}`).then((res)=>{
+      axiosInstance.delete(`delete/${val._id}`).then((res)=>{
       alert("Deleted Successfully")
       setData(data.filter(item => item._id !== val._id)); 
       navigate('/admin');

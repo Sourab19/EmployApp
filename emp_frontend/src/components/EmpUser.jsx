@@ -8,7 +8,7 @@ const EmpUser = () => {
     const [data,setData] =useState([]);
 
  useEffect(()=>{
-  axiosInstance.get("http://localhost:3000/emp/get").then((res)=>{
+  axiosInstance.get("get").then((res)=>{
     setData(res.data);
   }).catch((err)=>{
     console.log(err);

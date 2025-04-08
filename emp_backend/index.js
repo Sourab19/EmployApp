@@ -8,7 +8,7 @@ require("./db/connection"); // adjust if needed
 
 app.use(morgan("dev"));
 app.use(cors({
-  origin: "https://emp",
+  origin: "https://employ-app-client.vercel.app/",
   credentials: true,
   methods: ["GET", "POST", "PUT", "DELETE"]
 }));
