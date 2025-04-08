@@ -1,28 +1,27 @@
 const express = require("express");
-const app = new express();
+const app = express();
 const morgan = require("morgan");
-app.use(morgan("dev"));
 const cors = require("cors");
+
+require("dotenv").config();
+require("./db/connection"); // adjust if needed
+
+app.use(morgan("dev"));
 app.use(cors());
 app.use(express.json());
 
-require("dotenv").config();
-require("./db/connection");
+// Routes
+const empRoutes = require("./routes/empRoutes");
+const adminRoutes = require("./routes/adminRoutes");
+const userRoutes = require("./routes/userRoutes");
 
-app.get("/",(req,res)=>{
-  res.send("Api is running");
-})
+app.use("/emp", empRoutes);
+app.use("/admin", adminRoutes);
+app.use("/user", userRoutes);
 
-// deployment
-
-
-const basicRoute1 = require("./routes/empRoutes");
-app.use("/emp", basicRoute1);
-const basicRoute2 = require("./routes/adminRoutes");
-app.use("/admin", basicRoute2);
-const basicRoute3 = require("./routes/userRoutes");
-app.use("/user", basicRoute3);
-
+app.get("/", (req, res) => {
+  res.send("API is running");
+});
 const PORT = process.env.PORT|| 3000
 app.listen(PORT,()=>{
     console.log(`Server is running in Port ${PORT}`)
