@@ -12,6 +12,10 @@ require("./db/connection");
 const path = require("path");
 app.use(express.static(path.join(__dirname, "/build")));
 
+app.get('/*',function(req,res){
+  res.sendFile(path.join(__dirname ,'/build/index.html'));
+})
+
 const basicRoute1 = require("./routes/empRoutes");
 app.use("/emp", basicRoute1);
 const basicRoute2 = require("./routes/adminRoutes");
